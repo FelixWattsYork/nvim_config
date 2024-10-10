@@ -12,6 +12,7 @@ rm -rf ~/.cache/nvim
 ```
 
 ### 2. Update and Install LazyVim Defaults
+- Installation link for LazyVim - https://www.lazyvim.org/installation
 - After installing LazyVim, ensure that you have updated and installed all the defaults.
 - Use the LazyVim extras (use the `x` option).
 
