@@ -24,6 +24,47 @@ local conds_expand = require("luasnip.extras.conditions.expand")
 
 -- If you're reading this file for the first time, best skip to around line 190
 -- where the actual snippet-definitions start.
+--
+--
+-- To change the snippet expand key in LuaSnip from Return to Tab, you need to configure the key mapping for snippet expansion in your Neovim setup. If you are using LuaSnip and nvim-cmp or another completion plugin, here is how you can modify the configuration:
+
+-- Require LuaSnip
+local luasnip = require("luasnip")
+
+-- Configure key mappings
+vim.keymap.set({ "i", "s" }, "<Tab>", function()
+  if luasnip.expand_or_jumpable() then
+    luasnip.expand_or_jump()
+  else
+    return "<Tab>"
+  end
+end, { silent = true, expr = true })
+
+-- Setup nvim-cmp.
+local cmp = require("cmp")
+local luasnip = require("luasnip")
+
+cmp.setup({
+  mapping = {
+    -- Use <Tab> to expand snippets
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      else
+        fallback() -- fall back to normal tab functionality
+      end
+    end, { "i", "s" }),
+
+    -- Use <S-Tab> to jump backward in snippets
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, { "i", "s" }),
+  },
+})
 
 -- Every unspecified option will be set to the default.
 ls.setup({
