@@ -31,7 +31,7 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 - Clear the cache by running the following commands:
 
 ```bash
-rm -rf ~/.local/share/nvim 
+rm -rf ~/.local/share/nvim \
 && rm -rf ~/.local/state/nvim \
 && rm -rf ~/.cache/nvim \
 && rm -rf ~/.config/nvim
