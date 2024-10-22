@@ -6,17 +6,26 @@
 ````bash
 sudo snap install nvim --classic
 ````
--install neovim
+-install LazyVim Dependencies:
+git, lazygit,fd,ripgrep @ c compiler
 ````bash
-sudo apt install git lazygit fd ripgrep build-essential
+sudo apt install git fd-find ripgrep build-essential
+sudo snapt install lazygit
 ````
 -install tree-sitter-cli
 ````bash
 sudo snap install npm
 npm install tree-sitter-cli
 ````
-
-
+-instal nerd font (https://www.nerdfonts.com/) \
+You can repace with Jet Brains font of your choice
+````
+wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip \
+&& cd ~/.local/share/fonts \
+&& unzip JetBrainsMono.zip \
+&& rm JetBrainsMono.zip \
+&& fc-cache -fv
+````
 
 ### 1. Fresh Install of LazyVim and Clear Cache
 - Clear the cache by running the following commands:
