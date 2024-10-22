@@ -1,8 +1,24 @@
 
 # Steps to Set Up LazyVim with LuaSnip and LaTeX Snippets
 
+### 0. Install Dependencies
+-install neovim
+````bash
+sudo snap install nvim --classic
+````
+-install neovim
+````bash
+sudo apt install git lazygit fd ripgrep build-essential
+````
+-install tree-sitter-cli
+````bash
+sudo snap install npm
+npm install tree-sitter-cli
+````
+
+
+
 ### 1. Fresh Install of LazyVim and Clear Cache
-- Follow the LazyVim installation guide: https://www.lazyvim.org/installation
 - Clear the cache by running the following commands:
 
 ```bash
@@ -14,6 +30,7 @@ rm -rf ~/.config/nvim
 
 ### 2. Update and Install LazyVim Defaults
 - Installation link for LazyVim - https://www.lazyvim.org/installation
+- Additional Prequeisits: tree-sitter-cli
 - After installing LazyVim, ensure that you have updated and installed all the defaults.
 - Use the LazyVim extras (use the `x` option).
 
@@ -96,3 +113,24 @@ cmp.setup({
 ### 8. Important Notes
 - This configuration allows you to use `<Tab>` as the expander for LuaSnip snippets. However, it does not provide partial snippet completion.
 - For example, to expand a LaTeX matrix snippet, you must type the entire trigger (e.g., `mat`) and then press `<Tab>`. It will not complete with a partial trigger like `ma` followed by `<Tab>`.
+
+
+### 9. Install Zathura, latexmk & pdflatex
+- 
+
+
+### 10. Install VimTex
+- Create vimtex.lua file and add 
+```lua
+-- In ~/.config/nvim/lua/plugins/vimtex.lua
+return {
+  "lervag/vimtex",
+  lazy = false, -- we don't want to lazy load VimTeX
+  -- tag = "v2.15", -- uncomment to pin to a specific release
+  init = function()
+    -- VimTeX configuration goes here, e.g.
+    vim.g.vimtex_view_method = "zathura"
+  end,
+}
+```
+- Important note, before install VimTex, LuaSnips will see .tex files as plaintex files. After installing VimTex it will see them as .tex files

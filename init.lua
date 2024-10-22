@@ -51,3 +51,17 @@ cmp.setup({
     end, { "i", "s" }),
   },
 })
+vim.g.tex_conceal = "abdgm"
+
+-- Enable spell check for specific file types
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "lua", "markdown", "tex", "text" }, -- List the file types here
+  callback = function()
+    vim.opt.spell = true
+  end,
+})
+
+vim.opt.spelllang = "en_uk"
+
+-- Use <localleader>c to trigger continuous compilation
+vim.keymap.set("n", "<localleader>c", "<Plug>(vimtex-compile)")
