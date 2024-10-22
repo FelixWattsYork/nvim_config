@@ -14,7 +14,7 @@ sudo snapt install lazygit
 ````
 -install tree-sitter-cli
 ````bash
-sudo snap install npm
+sudo snap install nodejs
 npm install tree-sitter-cli
 ````
 -instal nerd font (https://www.nerdfonts.com/) \
