@@ -14,12 +14,12 @@ sudo snapt install lazygit
 ````
 -install tree-sitter-cli
 ````bash
-sudo snap install nodejs
+sudo snap install npm
 npm install tree-sitter-cli
 ````
 -instal nerd font (https://www.nerdfonts.com/) \
 You can repace with Jet Brains font of your choice
-````
+````bash
 wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/download/v3.2.1/JetBrainsMono.zip \
 && cd ~/.local/share/fonts \
 && unzip JetBrainsMono.zip \
@@ -31,15 +31,26 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 - Clear the cache by running the following commands:
 
 ```bash
-rm -rf ~/.local/share/nvim
-rm -rf ~/.local/state/nvim
-rm -rf ~/.cache/nvim
-rm -rf ~/.config/nvim
+rm -rf ~/.local/share/nvim 
+&& rm -rf ~/.local/state/nvim \
+&& rm -rf ~/.cache/nvim \
+&& rm -rf ~/.config/nvim
 ```
 
 ### 2. Update and Install LazyVim Defaults
-- Installation link for LazyVim - https://www.lazyvim.org/installation
-- Additional Prequeisits: tree-sitter-cli
+- Install LazyVim
+- clone LazyVim Repo
+````bash
+git clone https://github.com/LazyVim/starter ~/.config/nvim
+````
+- Remove the git folder
+````bash
+rm -rf ~/.config/nvim/.git
+````
+- Remove the git folder
+````bash
+nvim
+````
 - After installing LazyVim, ensure that you have updated and installed all the defaults.
 - Use the LazyVim extras (use the `x` option).
 
