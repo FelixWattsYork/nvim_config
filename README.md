@@ -156,11 +156,19 @@ ls.add_snippets(nil, {
 })
 
 ````
+-You should now be able to type date and then press tab to expand it as a snippet. You can also check that a snippet is loaded by running the :LuaSnipListAvaliable Command in neovim
+
 
 ### 9. Install Zathura, latexmk & pdflatex
-
+- install zathura (pdf viewer) and latexmk
 ````bash
-sudo apt install 
+sudo apt install zathura latexmk pdflatex
+````
+- Install pdflatex and extra fonts
+````bash
+sudo apt install texlive-latex-base \
+&& sudo apt install texlive-fonts-recommended \
+&& sudo apt install texlive-fonts-extra 
 ````
 
 
