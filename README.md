@@ -136,7 +136,10 @@ cmp.setup({
 
 
 ### 9. Install Zathura, latexmk & pdflatex
-- 
+
+````bash
+sudo apt install 
+````
 
 
 ### 10. Install VimTex
