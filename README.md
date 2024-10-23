@@ -57,24 +57,10 @@ nvim
 ### 3. Install LuaSnip from the Extras Menu
 - In the LazyVim extras menu, select and install LuaSnip. This ensures all dependencies are installed correctly.
 
-### 4. Add LuaSnip Example Snippets
-- Paste the following LuaSnip example snippets into your `init.lua` file:
-  - https://github.com/L3MON4D3/LuaSnip/blob/master/Examples/snippets.lua
+### 4. Navigaet to .config/nvim
+-Navigate to .config/nvim
 
-*(Note: You can organize your snippets into separate folders, but for quick testing, you can directly add them this way to verify they work.)*
-
-### 5. Install LaTeX Snippets Plugin
-- Install the LaTeX snippets plugin by adding the following code in the `lua/plugins/latexsnips.lua` file:
-
-```lua
-return {
-    "evesdropper/luasnip-latex-snippets.nvim",
-}
-```
-
-- After this, when you load a `.tex` file, you will have all the LaTeX snippets available.
-
-### 6. Configure LuaSnip and Key Mappings in init.lua
+### 5. Configure LuaSnip and Key Mappings in init.lua
 - Add the following configuration at the start of your `init.lua` file to require LuaSnip and set up key mappings:
 
 ```lua
@@ -134,6 +120,42 @@ cmp.setup({
 - This configuration allows you to use `<Tab>` as the expander for LuaSnip snippets. However, it does not provide partial snippet completion.
 - For example, to expand a LaTeX matrix snippet, you must type the entire trigger (e.g., `mat`) and then press `<Tab>`. It will not complete with a partial trigger like `ma` followed by `<Tab>`.
 
+
+
+### 8. Important Notes
+- In nvim create LuaSnip/ folder with all.lua and tex/ folders
+- Add code to load snippets from folder structure
+````bash
+-- Snippets Configuration
+require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/LuaSnip" } })
+require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/LuaSnip/tex" } })
+````
+
+-Example snippet to add to all.lua
+````bash
+local ls = require("luasnip")
+-- some shorthands...
+local snip = ls.snippet
+local node = ls.snippet_node
+local text = ls.text_node
+local insert = ls.insert_node
+local func = ls.function_node
+local choice = ls.choice_node
+local dynamicn = ls.dynamic_node
+
+ls.add_snippets(nil, {
+  all = {
+    snip({
+      trig = "date",
+      name = "Date", -- Fixed typo here
+      dscr = "Date in the form of YYYY-MM-DD",
+    }, {
+      text(os.date("%Y-%m-%d")),
+    }),
+  },
+})
+
+````
 
 ### 9. Install Zathura, latexmk & pdflatex
 
